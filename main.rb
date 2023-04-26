@@ -1,4 +1,5 @@
 require_relative './app'
+
 class Main
   def menu
     @list = {
@@ -17,11 +18,9 @@ class Main
     @list.each do |index, string|
       puts "#{index} - #{string}"
     end
-
     gets.chomp.to_i
   end
 end
-
 # handel the choices
 def choice(user_answer, response)
   actions = {
@@ -36,7 +35,6 @@ def choice(user_answer, response)
     9 => :add_game,
     10 => :exit_app
   }
-
   action = actions[user_answer]
   response.send(action)
 end
