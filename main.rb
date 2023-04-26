@@ -21,6 +21,7 @@ class Main
     gets.chomp.to_i
   end
 end
+
 # handel the choices
 def choice(user_answer, response)
   actions = {
