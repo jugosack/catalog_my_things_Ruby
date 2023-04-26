@@ -1,0 +1,2 @@
+class MusicAlbums
+end
