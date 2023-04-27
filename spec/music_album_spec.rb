@@ -7,7 +7,6 @@ RSpec.describe MusicAlbum do
     context 'when published over 10 years ago and on Spotify' do
       it 'returns true' do
         album = MusicAlbum.new(true, 'January 1, 2000')
-        # expect(album.can_be_archived?).to eq(true)
         expect(album.send(:can_be_archived?)).to be true
       end
     end
@@ -15,7 +14,6 @@ RSpec.describe MusicAlbum do
     context 'when published over 10 years ago but not on Spotify' do
       it 'returns false' do
         album = MusicAlbum.new(false, 'January 1, 2000')
-        # expect(album.can_be_archived?).to eq(false)
         expect(album.send(:can_be_archived?)).to be false
       end
     end
@@ -23,7 +21,6 @@ RSpec.describe MusicAlbum do
     context 'when published less than 10 years ago and on Spotify' do
       it 'returns false' do
         album = MusicAlbum.new(true, 'January 1, 2022')
-        # expect(album.can_be_archived?).to eq(false)
         expect(album.send(:can_be_archived?)).to be false
       end
     end
@@ -31,7 +28,6 @@ RSpec.describe MusicAlbum do
     context 'when published less than 10 years ago and not on Spotify' do
       it 'returns false' do
         album = MusicAlbum.new(false, 'January 1, 2022')
-        # expect(album.can_be_archived?).to eq(false)
         expect(album.send(:can_be_archived?)).to be false
       end
     end
