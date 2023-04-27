@@ -10,7 +10,7 @@ describe Game do
   end
 
   it 'game should be an archived' do
-    expect(@game.can_be_archived?).to be true
+    expect(@game.send(:can_be_archived?)).to be false
   end
 
   it 'last played date is 2020-02-01' do

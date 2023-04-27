@@ -9,7 +9,7 @@ class Game < Item
     @multiplayer = multiplayer
     @last_played_at = last_played_at
   end
-
+  private
   def can_be_archived?()
     super && (DateTime.now - Date.parse(last_played_at)).to_i / 365 > 2
   end
