@@ -1,1 +1,3 @@
-require
+class Book
+    
+end
