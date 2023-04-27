@@ -1,13 +1,14 @@
 require 'json'
 require 'date'
-require_relative './classes/game.rb'
-require_relative './classes/author.rb'
+require_relative './classes/game'
+require_relative './classes/author'
 # require_relative './classes/book.rb'
 # require_relative './classes/label.rb'
-require_relative './classes/genre.rb'
-require_relative './classes/music_albums.rb'
+require_relative './classes/genre'
+require_relative './classes/music_albums'
 class App
   attr_accessor :id, :books, :labels, :games, :authors, :music_albums, :genres
+
   puts
   puts "Welcome to Catalog of my things app!\n\n"
   def initialize
@@ -42,11 +43,11 @@ class App
     end
   end
 
-
   # Code to list all genres
   def list_genres
     puts 'genres'
     return puts 'No genres found' if @genres.empty?
+
     @genres.each_with_index do |genre, index|
       puts "#{index + 1}) Name: #{genre.name}"
     end
@@ -73,27 +74,27 @@ class App
   # Code to add music album
   def add_music_album
     puts 'add album'
-      puts 'Available on spotify? [Y / N]'
-      on_spotify = gets.chomp.downcase == 'y'
-      puts 'Enter publish date in format (YYYY-MM-DD)'
-      publish_date = Date.parse(gets.chomp)
-      new_music_album = MusicAlbum.new(nil,on_spotify, publish_date)
-      puts "Enter genre details\n"
-      new_genre = add_genre
-      new_music_album.add_genre(new_genre)
-      @music_album.push(new_music_album)
-      save_music_album(new_music_album)
-      puts 'Music album created successfully'
-    end
+    puts 'Available on spotify? [Y / N]'
+    on_spotify = gets.chomp.downcase == 'y'
+    puts 'Enter publish date in format (YYYY-MM-DD)'
+    publish_date = Date.parse(gets.chomp)
+    new_music_album = MusicAlbum.new(nil, on_spotify, publish_date)
+    puts "Enter genre details\n"
+    new_genre = add_genre
+    new_music_album.add_genre(new_genre)
+    @music_album.push(new_music_album)
+    save_music_album(new_music_album)
+    puts 'Music album created successfully'
+  end
 
-    def add_genre
-      puts 'Enter name'
-      name = gets.chomp
-      new_genre = Genre.new(nil, name)
-      @genres.push(new_genre)
-      save_genre(new_genre)
-      new_genre
-    end
+  def add_genre
+    puts 'Enter name'
+    name = gets.chomp
+    new_genre = Genre.new(nil, name)
+    @genres.push(new_genre)
+    save_genre(new_genre)
+    new_genre
+  end
 
   # Code to add game
   def add_game
@@ -110,6 +111,7 @@ class App
   ######################### JSON methods #########################
   def load_music_albums
     return unless File.exist?('./JSON/music_albums.json')
+
     music_albums_loaded = JSON.parse(File.read('./JSON/music_albums.json'))
     music_albums_loaded.each do |music_album|
       new_music_album = MusicAlbum.new(music_album['id'], music_album['on_spotify'], music_album['publish_date'])
@@ -121,6 +123,7 @@ class App
 
   def load_genres
     return unless File.exist?('./JSON/genres.json')
+
     genres_loaded = JSON.parse(File.read('./JSON/genres.json'))
     genres_loaded.each do |genre|
       new_genre = Genre.new(genre['id'], genre['name'])
@@ -129,8 +132,8 @@ class App
   end
 
   def save_music_album(music_album)
-    new_music_album = { id: music_album.id, on_spotify: music_album.on_spotify,publish_date: music_album.publish_date,
-                         genre_id: music_album.genre.id }
+    new_music_album = { id: music_album.id, on_spotify: music_album.on_spotify, publish_date: music_album.publish_date,
+                        genre_id: music_album.genre.id }
     if File.exist?('./JSON/music_albums.json')
       music_albums_loaded = JSON.parse(File.read('./JSON/music_albums.json'))
       music_albums_loaded << new_music_album
