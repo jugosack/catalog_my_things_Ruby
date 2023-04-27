@@ -117,7 +117,7 @@ To test the web app run the following command:
 - Twitter: [twitter](https://twitter.com/Jugoslav_A)
 - Facebook: [facebook](https://www.facebook.com/jugoslav.ackoski/)
 
-- -👤 **Uchechi Nwaka**
+👤 **Uchechi Nwaka**
 
 - -- GitHub: [@uchexm](https://github.com/uchexm)
 - -- LinkedIn: [@nwakauc](https://www.linkedin.com/in/nwakauc/)
