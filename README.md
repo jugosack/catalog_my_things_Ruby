@@ -2,8 +2,7 @@
 
 # 📗 Table of Contents
 
-- [📖 About the Project](#about-project)
-   -[:video_camera: Video Presentation](#video-presentation)
+- [📖 About the Project](#about-project) -[:video_camera: Video Presentation](#video-presentation)
   - [:camera: screenshot](#screenshot)
   - [🛠 Built With](#built-with)
     - [Tech Stack](#tech-stack)
@@ -23,8 +22,9 @@
 # 📇 Catalog of my things <a name="about-project"></a>
 
 > This project is console app built using ruby. It keeps a records of different things:
+
 - books
-- music 
+- music
 - albums
 - movies
 - games
@@ -116,6 +116,12 @@ To test the web app run the following command:
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/jugoslavachkoski/)
 - Twitter: [twitter](https://twitter.com/Jugoslav_A)
 - Facebook: [facebook](https://www.facebook.com/jugoslav.ackoski/)
+
+- -👤 **Uchechi Nwaka**
+
+- -- GitHub: [@uchexm](https://github.com/uchexm)
+- -- LinkedIn: [@nwakauc](https://www.linkedin.com/in/nwakauc/)
+- -- Twiter [@nwakauc](https://twitter.com/Nwakauc)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
