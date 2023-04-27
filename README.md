@@ -39,7 +39,6 @@ Data are stored in json file and could be used whenever you start the app.
 
   <img src="./image/catalog.png" alt="">
 <br>
-<br>
   <img src="./image/catalog_uml.png" alt="">
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -53,8 +52,8 @@ Data are stored in json file and could be used whenever you start the app.
 
 ### Key Features <a name="key-features"></a>
 
-- [Keep track of all things own by a user]
-- [Created using ruby to keep a records of different types of things a user own: books, music albums, movies, and games]
+- Keep track of all things own by a user
+- Created using ruby to keep a records of different types of things a user own: books, music albums, movies, and games
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -122,8 +121,8 @@ To test the web app run the following command:
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [Add web interface]
-- [Improve unit tests]
+- Add web interface
+- Improve unit tests
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
