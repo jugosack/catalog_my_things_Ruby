@@ -22,7 +22,14 @@
 
 # 📇 Catalog of my things <a name="about-project"></a>
 
-> This project is console app built using ruby, the app will help you to keep a records of different types of things you own: books, music albums, movies, and games, the data are stored in json file, and it will be always useable whenever you start the app.
+> This project is console app built using ruby. It keeps a records of different things:
+- books
+- music 
+- albums
+- movies
+- games
+
+Data are stored in json file and could be used whenever you start the app.
 
 ## :video_camera: Video Presentation <a name="video-presentation"></a>
 
@@ -31,15 +38,18 @@
 ## :camera: Screenshot <a name="Screen-shot"></a>
 
   <img src="./image/catalog.png" alt="">
-
+<br>
+<br>
   <img src="./image/catalog_uml.png" alt="">
 
 ## 🛠 Built With <a name="built-with"></a>
 
 ### Tech Stack <a name="tech-stack"></a>
 
-- <a href="https://www.ruby-lang.org/es/">Ruby</a>
+- <a href="https://www.ruby-lang.org/es/">Languages: Ruby</a>
 - <a href="https://www.postgresql.org/">Postgresql</a>
+- Frameworks: N/A
+- Technologies Used: GIT, GITHUB, LINTERS
 
 ### Key Features <a name="key-features"></a>
 
