@@ -1,0 +1,14 @@
+[
+  {
+    "id": 557,
+    "on_spotify": true,
+    "publish_date": "2023-04-27",
+    "genre_id": 1094
+  },
+  {
+    "id": 712,
+    "on_spotify": false,
+    "publish_date": "2023-03-27",
+    "genre_id": 551
+  }
+]
