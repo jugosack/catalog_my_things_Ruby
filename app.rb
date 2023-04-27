@@ -46,12 +46,6 @@ class App
     puts
   end
 
-   # Code to add genre
-   def add_genre
-    puts 'add genre'
-    puts
-  end
-
   # Code to add book
   def add_book
     puts 'add book'
