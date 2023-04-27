@@ -9,10 +9,11 @@ class Main
       '4' => 'List all genres',
       '5' => 'List of games',
       '6' => 'List all authors',
-      '7' => 'Add book',
-      '8' => 'Add music album ',
-      '9' => 'Add a game',
-      '10' => 'Exit'
+      '7' => 'Add genre',
+      '8' => 'Add book',
+      '9' => 'Add music album ',
+      '10' => 'Add a game',
+      '11' => 'Exit'
     }
 
     @list.each do |index, string|
@@ -31,10 +32,11 @@ def choice(user_answer, response)
     4 => :list_genres,
     5 => :list_games,
     6 => :list_authors,
-    7 => :add_book,
-    8 => :add_music_album,
-    9 => :add_game,
-    10 => :exit_app
+    7 => :add_genre,
+    8 => :add_book,
+    9 => :add_music_album,
+    10 => :add_game,
+    11 => :exit_app
   }
   action = actions[user_answer]
   response.send(action)
@@ -43,7 +45,7 @@ end
 def main
   response = App.new
   loop do
-    puts 'Please choose an option by entering a number [1-10]'
+    puts 'Please choose an option by entering a number [1-11]'
     puts
     user_answer = Main.new.menu
     choice user_answer, response
