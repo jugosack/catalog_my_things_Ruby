@@ -34,7 +34,7 @@ def choice(user_answer, response)
     7 => :add_book,
     8 => :add_music_album,
     9 => :add_game,
-    10 => :exit_app,
+    10 => :exit_app
   }
 
   if (1..10).include?(user_answer.to_i)

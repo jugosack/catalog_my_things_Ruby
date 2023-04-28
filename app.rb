@@ -2,12 +2,12 @@ require 'json'
 require 'date'
 require_relative './classes/game'
 require_relative './classes/author'
-require_relative './classes/book.rb'
-require_relative './classes/label.rb'
+require_relative './classes/book'
+require_relative './classes/label'
 require_relative './classes/genre'
 require_relative './classes/music_albums'
-require_relative './model/label_model.rb'
-require_relative './model/book_model.rb'
+require_relative './model/label_model'
+require_relative './model/book_model'
 
 class App
   attr_accessor :id, :books, :labels, :games, :authors, :music_albums, :genres
@@ -27,10 +27,13 @@ class App
   def list_books
     puts 'books'
     puts
-    if(@books.empty?)
-      puts "No books available"
+    if @books.empty?
+      puts 'No books available'
     else
-      @books.each { |book| puts "Publisher: \"#{book.publisher}\", Published Date: #{book.publish_date}, Cover State: #{book.cover_state}, Archived: #{book.archived}, label: #{book.label} " }
+      @books.each_with_index do |book, index|
+        puts "#{index + 1}) Publisher: \"#{book.publisher}\", Published Date: #{book.publish_date},
+        Cover State: #{book.cover_state}, Archived: #{book.archived}"
+      end
     end
   end
 
@@ -38,10 +41,10 @@ class App
   def list_labels
     puts 'labels'
     puts
-    if(@labels.empty?)
-      puts "No labels available"
+    if @labels.empty?
+      puts 'No labels available'
     else
-      @labels.each { |label| puts "Title: \"#{label.title}\", Color: #{label.color}" }
+      @labels.each_with_index { |label, index| puts "#{index + 1}) Title: \"#{label.title}\", Color: #{label.color}" }
     end
   end
 
@@ -88,7 +91,7 @@ class App
     print 'Enter Published Date: '
     publish_date = gets.chomp
     print 'Enter Cover state (good/bad): (bad) for bad cover state or (good) for good cover state: '
-    cover_state = gets.chomp 
+    cover_state = gets.chomp
     puts 'Add label to book'
     print 'Enter label title: '
     label_title = gets.chomp
