@@ -1,3 +1,4 @@
+require_relative './load_data'
 require 'json'
 require 'date'
 require_relative './classes/game'
@@ -9,7 +10,6 @@ require_relative './classes/music_albums'
 require_relative './model/label_model'
 require_relative './model/book_model'
 require_relative './load_data'
-require 'pry'
 
 class App # rubocop:disable Metrics/ClassLength
   attr_accessor :id, :books, :labels, :games, :authors, :music_albums, :genres
@@ -75,7 +75,6 @@ class App # rubocop:disable Metrics/ClassLength
     end
   end
 
-  # Code to list all games
   def list_games
     if @games.empty?
       puts 'There is no game added!'
@@ -153,7 +152,6 @@ class App # rubocop:disable Metrics/ClassLength
     new_genre
   end
 
-  # Code to add game
   def add_game
     puts 'Is it a multiplayer game? [Y/N]: '
     multiplayer = gets.chomp.to_s.downcase
@@ -189,7 +187,6 @@ class App # rubocop:disable Metrics/ClassLength
   end
 
   def exit_app
-    # File.write('./JSON/genres.json', JSON.pretty_generate(@genres))
     File.write('./JSON/games.json', JSON.pretty_generate(@games))
     File.write('./JSON/authors.json', JSON.pretty_generate(@authors))
     puts 'Thank you for using this app!'
