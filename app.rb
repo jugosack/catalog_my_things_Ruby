@@ -148,6 +148,7 @@ class App
 
     exit
   end
+<<<<<<< HEAD
 
   ######################### JSON methods #########################
   def load_music_albums
@@ -196,4 +197,6 @@ class App
   end
 
   private :add_genre
+=======
+>>>>>>> 5e8fb74 (Fixed Linters)
 end
