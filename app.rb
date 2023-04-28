@@ -25,7 +25,7 @@ class App
 
   # Code to list all books
   def list_books
-    puts 'books'
+    puts 'All books'
     puts
     if @books.empty?
       puts 'No books available'
@@ -148,7 +148,6 @@ class App
 
     exit
   end
-<<<<<<< HEAD
 
   ######################### JSON methods #########################
   def load_music_albums
@@ -197,6 +196,4 @@ class App
   end
 
   private :add_genre
-=======
->>>>>>> 5e8fb74 (Fixed Linters)
 end
