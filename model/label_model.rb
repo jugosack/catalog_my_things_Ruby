@@ -2,10 +2,13 @@ require 'json'
 require_relative '../classes/label'
 
 class LabelModel
-  @file_path = '../JSON/labels.json'
+  @file_path = './JSON/labels.json'
 
   def self.save(labels)
-    all_labels = labels.map | label | { title: label.title, color: label.color }
+    if(labels.empty?)
+      exit
+    end
+    all_labels = labels.map { | label | { title: label.title, color: label.color } }
     File.write(@file_path, JSON.pretty_generate(all_labels))
   end
 

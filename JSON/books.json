@@ -1,0 +1,14 @@
+[
+  {
+    "publisher": "dami",
+    "publish_date": "2023-10-10",
+    "cover_state": "good",
+    "archived": false
+  },
+  {
+    "publisher": "felix",
+    "publish_date": "2010-10-10",
+    "cover_state": "bad",
+    "archived": false
+  }
+]

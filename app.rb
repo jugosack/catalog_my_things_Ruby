@@ -15,7 +15,7 @@ class App
   puts
   puts "Welcome to Catalog of my things app!\n\n"
   def initialize
-    @books = []
+    @books = BookModel.fetch
     @labels = LabelModel.fetch
     @music_album = []
     @genres = []
@@ -27,14 +27,22 @@ class App
   def list_books
     puts 'books'
     puts
-    @books.each { |book| puts "Publisher: \"#{book.publisher}\", Published Date: #{book.published_date}" }
+    if(@books.empty?)
+      puts "No books available"
+    else
+      @books.each { |book| puts "Publisher: \"#{book.publisher}\", Published Date: #{book.publish_date}, Cover State: #{book.cover_state}, Archived: #{book.archived} " }
+    end
   end
 
   # Code to list all labels
   def list_labels
     puts 'labels'
     puts
-    @labels.each { |label| puts "Title: \"#{label.title}\", Color: #{label.color}" }
+    if(@labels.empty?)
+      puts "No labels available"
+    else
+      @labels.each { |label| puts "Title: \"#{label.title}\", Color: #{label.color}" }
+    end
   end
 
   # Code to list all music album
@@ -79,7 +87,9 @@ class App
     publisher = gets.chomp
     print 'Enter Published Date: '
     publish_date = gets.chomp
-    @books << Book.new(publisher, publish_date)
+    print 'Enter Cover state (good/bad): (bad) for bad cover state or (good) for good cover state: '
+    cover_state = gets.chomp 
+    @books << Book.new(publisher, publish_date, cover_state)
     puts 'Book created successfully'
   end
 
@@ -121,7 +131,7 @@ class App
     BookModel.save(@books)
 
     # store books in json
-    LabelModel.save(@label)
+    LabelModel.save(@labels)
 
     exit
   end
