@@ -1,4 +1,3 @@
-require_relative './load_data'
 require 'json'
 require 'date'
 require_relative './classes/game'
