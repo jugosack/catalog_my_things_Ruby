@@ -24,12 +24,14 @@ class App
   def list_books
     puts 'books'
     puts
+    @books.each { |book| puts "Publisher: \"#{book.publisher}\", Published Date: #{book.published_date}" }
   end
 
   # Code to list all labels
   def list_labels
     puts 'labels'
     puts
+    @labels.each { |label| puts "Title: \"#{label.title}\", Color: #{label.color}" }
   end
 
   # Code to list all music album
@@ -69,6 +71,13 @@ class App
   def add_book
     puts 'add book'
     puts
+
+    print 'Enter Publisher Name: '
+    publisher = gets.chomp
+    print 'Enter Published Date: '
+    publish_date = gets.chomp
+    @books << Book.new(publisher, publish_date)
+    puts 'Book created successfully'
   end
 
   # Code to add music album
