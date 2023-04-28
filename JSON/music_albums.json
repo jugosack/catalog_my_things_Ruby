@@ -1,62 +1,20 @@
 [
   {
-    "id": 557,
+    "id": 527,
     "on_spotify": true,
-    "publish_date": "2023-04-27",
-    "genre_id": 1094
+    "publish_date": "2021-02-10",
+    "genre_id": 1244
   },
   {
-    "id": 712,
+    "id": 427,
     "on_spotify": false,
-    "publish_date": "2023-03-27",
-    "genre_id": 551
+    "publish_date": "2022-10-10",
+    "genre_id": 1501
   },
   {
-    "id": 178,
+    "id": 52,
     "on_spotify": true,
-    "publish_date": "2022-03-22",
-    "genre_id": 1024
-  },
-  {
-    "id": 291,
-    "on_spotify": false,
-    "publish_date": "2022-09-09",
-    "genre_id": 923
-  },
-  {
-    "id": 729,
-    "on_spotify": true,
-    "publish_date": "2022-09-09",
-    "genre_id": 713
-  },
-  {
-    "id": 215,
-    "on_spotify": true,
-    "publish_date": "2022-09-09",
-    "genre_id": 1017
-  },
-  {
-    "id": 211,
-    "on_spotify": true,
-    "publish_date": "2022-09-09",
-    "genre_id": 917
-  },
-  {
-    "id": 742,
-    "on_spotify": true,
-    "publish_date": "2022-03-03",
-    "genre_id": 1575
-  },
-  {
-    "id": 732,
-    "on_spotify": true,
-    "publish_date": "2022-09-09",
-    "genre_id": 1012
-  },
-  {
-    "id": 910,
-    "on_spotify": false,
-    "publish_date": "2022-09-09",
-    "genre_id": 716
+    "publish_date": "2021-02-10",
+    "genre_id": 997
   }
 ]
