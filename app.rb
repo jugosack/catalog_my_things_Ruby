@@ -10,7 +10,7 @@ require_relative './model/label_model'
 require_relative './model/book_model'
 require_relative './load_data'
 
-class App
+class App # rubocop:disable Metrics/ClassLength
   attr_accessor :id, :books, :labels, :games, :authors, :music_albums, :genres
 
   puts
@@ -161,7 +161,7 @@ class App
     publish_date = gets.chomp
     puts 'What is the last played date [yyyy-mm-dd]: '
     last_played_date = gets.chomp
-    game = Game.new(publish_date, multiplayer, last_played_date)
+    game = Game.new(id, publish_date, multiplayer, last_played_date)
     game_hash = {
       'publish_date' => publish_date,
       'multiplayer' => multiplayer,
