@@ -1,7 +1,7 @@
 require_relative '../classes/label'
 require_relative '../item'
 
-describe Genre do
+describe Label do
   before :each do
     @label = Label.new('new', 'green')
   end
