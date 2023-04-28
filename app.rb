@@ -1,12 +1,14 @@
+require_relative './load_data'
 require 'json'
 require 'date'
+require_relative './classes/book'
+require_relative './classes/label'
 require_relative './classes/game'
-require_relative './classes/author'
-# require_relative './classes/book.rb'
-# require_relative './classes/label.rb'
 require_relative './classes/genre'
 require_relative './classes/music_albums'
-class App
+require_relative './classes/author'
+
+class App # rubocop:disable Metrics/ClassLength
   attr_accessor :id, :books, :labels, :games, :authors, :music_albums, :genres
 
   puts
@@ -18,15 +20,25 @@ class App
     @genres = []
     @games = []
     @authors = []
+
+    loader = Loader.new
+    loader.load_games(@games)
+    loader.load_authors(@authors)
   end
 
   # Code to list all books
   def list_books
-    puts 'books'
-    puts
+    if @books.empty?
+      puts 'There are no books in the library'
+      return
+    end
+    @books.each_with_index do |book, index|
+      print "#{index + 1}-Name: #{book.name} , Publisher: #{book.publisher},
+       Cover state: #{book.cover_state} , Publish date: #{book.publish_date}\n\n"
+    end
   end
 
-  # Code to list all labels
+  # Code to list all labels7
   def list_labels
     puts 'labels'
     puts
@@ -53,19 +65,34 @@ class App
     end
   end
 
-  # Code to list all games
   def list_games
-    puts 'games'
-    puts
+    if @games.empty?
+      puts 'There is no game added!'
+    else
+      puts 'All the games: '
+      puts '----------------------------'
+      @games.each_with_index do |game, index|
+        print "[Game #{index + 1}]. Multiplayer : #{game['multiplayer']}, Publish Date :"
+        puts " #{game['publish_date']}, Last Played Date : #{game['last_played_date']}"
+        puts '----------------------------'
+      end
+    end
   end
 
-  # Code to list all authors
   def list_authors
-    puts 'authors'
-    puts
+    puts 'All authors: '
+    puts '----------------------------'
+    if @authors.empty?
+      puts 'There are no authors!'
+    else
+      puts 'Authors:'
+      @authors.each_with_index do |author, index|
+        puts "[Author #{index + 1}]. First Name : #{author['first_name']}, Last Name : #{author['last_name']} "
+        puts '----------------------------'
+      end
+    end
   end
 
-  # Code to add book
   def add_book
     puts 'add book'
     puts
@@ -96,14 +123,45 @@ class App
     new_genre
   end
 
-  # Code to add game
   def add_game
-    puts 'add game'
-    puts
+    puts 'Is it a multiplayer game? [Y/N]: '
+    multiplayer = gets.chomp.to_s.downcase
+    multiplayer = %w[y yes].include?(multiplayer)
+    puts 'What is the publish date for the game [yyyy-mm-dd]: '
+    publish_date = gets.chomp
+    puts 'What is the last played date [yyyy-mm-dd]: '
+    last_played_date = gets.chomp
+    game = Game.new(id, publish_date, multiplayer, last_played_date)
+    game_hash = {
+      'publish_date' => publish_date,
+      'multiplayer' => multiplayer,
+      'last_played_date' => last_played_date
+    }
+    @games << game_hash
+    author = add_author
+    author.add_item(game)
+    puts "The game created with #{author.first_name} author added successfully!"
   end
 
-  # exit function
+  def add_author
+    print 'Enter the first name of the author: '
+    first_name = gets.chomp
+    print 'Enter the last name of the author: '
+    last_name = gets.chomp
+    author = Author.new(first_name, last_name)
+    author_hash = {
+      'first_name' => first_name,
+      'last_name' => last_name
+    }
+    @authors << author_hash
+    author
+  end
+
   def exit_app
+    File.write('./JSON/music_album.json', JSON.pretty_generate(@music_album))
+    File.write('./JSON/genres.json', JSON.pretty_generate(@genres))
+    File.write('./JSON/games.json', JSON.pretty_generate(@games))
+    File.write('./JSON/authors.json', JSON.pretty_generate(@authors))
     puts 'Thank you for using this app!'
     exit
   end

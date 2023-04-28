@@ -10,5 +10,53 @@
     "on_spotify": false,
     "publish_date": "2023-03-27",
     "genre_id": 551
+  },
+  {
+    "id": 178,
+    "on_spotify": true,
+    "publish_date": "2022-03-22",
+    "genre_id": 1024
+  },
+  {
+    "id": 291,
+    "on_spotify": false,
+    "publish_date": "2022-09-09",
+    "genre_id": 923
+  },
+  {
+    "id": 729,
+    "on_spotify": true,
+    "publish_date": "2022-09-09",
+    "genre_id": 713
+  },
+  {
+    "id": 215,
+    "on_spotify": true,
+    "publish_date": "2022-09-09",
+    "genre_id": 1017
+  },
+  {
+    "id": 211,
+    "on_spotify": true,
+    "publish_date": "2022-09-09",
+    "genre_id": 917
+  },
+  {
+    "id": 742,
+    "on_spotify": true,
+    "publish_date": "2022-03-03",
+    "genre_id": 1575
+  },
+  {
+    "id": 732,
+    "on_spotify": true,
+    "publish_date": "2022-09-09",
+    "genre_id": 1012
+  },
+  {
+    "id": 910,
+    "on_spotify": false,
+    "publish_date": "2022-09-09",
+    "genre_id": 716
   }
 ]
