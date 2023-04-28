@@ -2,10 +2,13 @@ require 'json'
 require 'date'
 require_relative './classes/game'
 require_relative './classes/author'
-# require_relative './classes/book.rb'
-# require_relative './classes/label.rb'
+require_relative './classes/book.rb'
+require_relative './classes/label.rb'
 require_relative './classes/genre'
 require_relative './classes/music_albums'
+require_relative './model/label_model.rb'
+require_relative './model/book_model.rb'
+
 class App
   attr_accessor :id, :books, :labels, :games, :authors, :music_albums, :genres
 
@@ -13,7 +16,7 @@ class App
   puts "Welcome to Catalog of my things app!\n\n"
   def initialize
     @books = []
-    @labels = []
+    @labels = LabelModel.fetch
     @music_album = []
     @genres = []
     @games = []
@@ -114,6 +117,12 @@ class App
   # exit function
   def exit_app
     puts 'Thank you for using this app!'
+    # store books in json
+    BookModel.save(@books)
+
+    # store books in json
+    LabelModel.save(@label)
+
     exit
   end
 
