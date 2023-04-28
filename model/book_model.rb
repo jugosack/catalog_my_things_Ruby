@@ -9,8 +9,8 @@ class BookModel
       exit
     end
     all_books = books.map do |book|
-      { publisher: book.publisher, publish_date: book.publish_date, cover_state: book.cover_state,
-        archived: book.archived }
+      { id: book.id, publisher: book.publisher, publish_date: book.publish_date, cover_state: book.cover_state,
+        archived: book.archived, label: book.label.id }
     end
     File.write(@file_path, JSON.pretty_generate(all_books))
   end

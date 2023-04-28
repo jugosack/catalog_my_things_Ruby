@@ -29,5 +29,10 @@ class Item
     @author = author
   end
 
+  def add_label(label)
+    @label = label
+    label.items << self unless label.items.include?(self)
+  end
+
   private :can_be_archived?
 end

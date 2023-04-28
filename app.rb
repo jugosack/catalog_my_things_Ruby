@@ -30,7 +30,7 @@ class App
     if(@books.empty?)
       puts "No books available"
     else
-      @books.each { |book| puts "Publisher: \"#{book.publisher}\", Published Date: #{book.publish_date}, Cover State: #{book.cover_state}, Archived: #{book.archived} " }
+      @books.each { |book| puts "Publisher: \"#{book.publisher}\", Published Date: #{book.publish_date}, Cover State: #{book.cover_state}, Archived: #{book.archived}, label: #{book.label} " }
     end
   end
 
@@ -89,7 +89,17 @@ class App
     publish_date = gets.chomp
     print 'Enter Cover state (good/bad): (bad) for bad cover state or (good) for good cover state: '
     cover_state = gets.chomp 
-    @books << Book.new(publisher, publish_date, cover_state)
+    puts 'Add label to book'
+    print 'Enter label title: '
+    label_title = gets.chomp
+    print 'Enter label color: '
+    label_color = gets.chomp
+    label = Label.new label_title, label_color
+    book = Book.new(publisher, publish_date, cover_state)
+    book.add_label(label)
+    @labels << label
+    @books << book
+
     puts 'Book created successfully'
   end
 
