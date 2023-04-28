@@ -1,0 +1,22 @@
+[
+  {
+    "publish_date": "2020-02-02",
+    "multiplayer": true,
+    "last_played_date": "2022-1-01"
+  },
+  {
+    "publish_date": "2022-09-09",
+    "multiplayer": false,
+    "last_played_date": "2022-09-09"
+  },
+  {
+    "publish_date": "2022",
+    "multiplayer": true,
+    "last_played_date": "2022-09-09"
+  },
+  {
+    "publish_date": "2022-09-09",
+    "multiplayer": true,
+    "last_played_date": "2022-09-09"
+  }
+]
