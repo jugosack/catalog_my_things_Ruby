@@ -1,12 +1,14 @@
-require_relative './load_data'
 require 'json'
 require 'date'
+require_relative './classes/game'
+require_relative './classes/author'
 require_relative './classes/book'
 require_relative './classes/label'
-require_relative './classes/game'
 require_relative './classes/genre'
 require_relative './classes/music_albums'
-require_relative './classes/author'
+require_relative './model/label_model'
+require_relative './model/book_model'
+require_relative './load_data'
 
 class App # rubocop:disable Metrics/ClassLength
   attr_accessor :id, :books, :labels, :games, :authors, :music_albums, :genres
@@ -14,10 +16,10 @@ class App # rubocop:disable Metrics/ClassLength
   puts
   puts "Welcome to Catalog of my things app!\n\n"
   def initialize
-    @books = []
-    @labels = []
-    @music_album = []
-    @genres = []
+    @books = BookModel.fetch
+    @labels = LabelModel.fetch
+    @music_album = load_music_albums
+    @genres = load_genres
     @games = []
     @authors = []
 
@@ -28,13 +30,15 @@ class App # rubocop:disable Metrics/ClassLength
 
   # Code to list all books
   def list_books
+    puts 'All books'
+    puts
     if @books.empty?
-      puts 'There are no books in the library'
-      return
-    end
-    @books.each_with_index do |book, index|
-      print "#{index + 1}-Name: #{book.name} , Publisher: #{book.publisher},
-       Cover state: #{book.cover_state} , Publish date: #{book.publish_date}\n\n"
+      puts 'No books available'
+    else
+      @books.each_with_index do |book, index|
+        puts "#{index + 1}) Publisher: \"#{book.publisher}\", Published Date: #{book.publish_date},
+        Cover State: #{book.cover_state}, Archived: #{book.archived}"
+      end
     end
   end
 
@@ -42,6 +46,11 @@ class App # rubocop:disable Metrics/ClassLength
   def list_labels
     puts 'labels'
     puts
+    if @labels.empty?
+      puts 'No labels available'
+    else
+      @labels.each_with_index { |label, index| puts "#{index + 1}) Title: \"#{label.title}\", Color: #{label.color}" }
+    end
   end
 
   # Code to list all music album
@@ -96,6 +105,25 @@ class App # rubocop:disable Metrics/ClassLength
   def add_book
     puts 'add book'
     puts
+
+    print 'Enter Publisher Name: '
+    publisher = gets.chomp
+    print 'Enter Published Date: '
+    publish_date = gets.chomp
+    print 'Enter Cover state (good/bad): (bad) for bad cover state or (good) for good cover state: '
+    cover_state = gets.chomp
+    puts 'Add label to book'
+    print 'Enter label title: '
+    label_title = gets.chomp
+    print 'Enter label color: '
+    label_color = gets.chomp
+    label = Label.new label_title, label_color
+    book = Book.new(publisher, publish_date, cover_state)
+    book.add_label(label)
+    @labels << label
+    @books << book
+
+    puts 'Book created successfully'
   end
 
   # Code to add music album
@@ -158,35 +186,45 @@ class App # rubocop:disable Metrics/ClassLength
   end
 
   def exit_app
-    File.write('./JSON/music_album.json', JSON.pretty_generate(@music_album))
-    File.write('./JSON/genres.json', JSON.pretty_generate(@genres))
     File.write('./JSON/games.json', JSON.pretty_generate(@games))
     File.write('./JSON/authors.json', JSON.pretty_generate(@authors))
     puts 'Thank you for using this app!'
+    # store books in json
+    BookModel.save(@books)
+
+    # store books in json
+    LabelModel.save(@labels)
+
     exit
   end
 
   ######################### JSON methods #########################
   def load_music_albums
-    return unless File.exist?('./JSON/music_albums.json')
-
-    music_albums_loaded = JSON.parse(File.read('./JSON/music_albums.json'))
-    music_albums_loaded.each do |music_album|
-      new_music_album = MusicAlbum.new(music_album['id'], music_album['on_spotify'], music_album['publish_date'])
-      new_genre = @genres.select { |genre| genre.id == music_album['genre_id'] }[0]
-      new_music_album.add_genre(new_genre)
-      @music_albums << new_music_album
+    # return unless File.exist?('./JSON/music_albums.json')
+    music = []
+    if File.exist?('./JSON/music_albums.json')
+      music_albums_loaded = JSON.parse(File.read('./JSON/music_albums.json'))
+      music_albums_loaded.each do |music_album|
+        new_music_album = MusicAlbum.new(music_album['id'], music_album['on_spotify'], music_album['publish_date'])
+        genres = load_genres
+        new_genre = genres.select { |genre| genre.id == music_album['genre_id'] }[0]
+        new_music_album.add_genre(new_genre)
+        music << new_music_album
+      end
     end
+    music
   end
 
   def load_genres
-    return unless File.exist?('./JSON/genres.json')
-
-    genres_loaded = JSON.parse(File.read('./JSON/genres.json'))
-    genres_loaded.each do |genre|
-      new_genre = Genre.new(genre['id'], genre['name'])
-      @genres << new_genre
+    genres = []
+    if File.exist?('./JSON/genres.json')
+      genres_loaded = JSON.parse(File.read('./JSON/genres.json'))
+      genres_loaded.each do |genre|
+        new_genre = Genre.new(genre['id'], genre['name'])
+        genres << new_genre
+      end
     end
+    genres
   end
 
   def save_music_album(music_album)
@@ -212,5 +250,5 @@ class App # rubocop:disable Metrics/ClassLength
     end
   end
 
-  private :add_genre
+  # private :add_genre
 end

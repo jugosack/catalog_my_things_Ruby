@@ -2,7 +2,7 @@ require_relative '../classes/game'
 
 describe Game do
   before :each do
-    @game = Game.new '2020-02-01', 'multiplayer', '2017-10-11'
+    @game = Game.new '23', '2020-02-01', 'multiplayer', '2017-10-11'
   end
 
   it 'game should be an instance of game class' do

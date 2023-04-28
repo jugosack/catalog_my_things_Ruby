@@ -14,7 +14,7 @@ describe Label do
 
   context '#add_item' do
     it 'takes an instance of item and add it to the collection of items' do
-      @item = Item.new('2010-1-15')
+      @item = Item.new(23, '2010-1-15')
       @label.add_item(@item)
       expect(@label.items.length).to eq(1)
       expect(@item.label).to be_an_instance_of(Label)

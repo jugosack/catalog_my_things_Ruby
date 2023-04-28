@@ -1,10 +1,11 @@
 require_relative '../item'
 
 class Book < Item
-  attr_accessor :publisher, :cover_state
+  attr_accessor :publisher, :cover_state, :id
 
-  def initialize(publisher, publish_date, cover_state = 'good', archived: false)
-    super(publish_date, archived: archived)
+  def initialize(publisher, publish_date, cover_state = 'good', id = nil, archived: false)
+    @id = id || Random.rand(1..1000)
+    super(@id, publish_date, archived: archived)
     @publisher = publisher
     @cover_state = cover_state
   end

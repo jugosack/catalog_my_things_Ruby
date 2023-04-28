@@ -123,6 +123,12 @@ To test the web app run the following command:
 - -- LinkedIn: [@nwakauc](https://www.linkedin.com/in/nwakauc/)
 - -- Twiter [@nwakauc](https://twitter.com/Nwakauc)
 
+👤 **Damilare Arikeusola**
+
+- GitHub: [@mrprotocoll](https://github.com/mrprotocoll)
+- Twitter: [@dprotocoll](https://twitter.com/dprotocoll)
+- LinkedIn: [@mrprotocoll](https://www.linkedin.com/in/mrprotocoll)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>
